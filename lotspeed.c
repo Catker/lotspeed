@@ -20,7 +20,11 @@
 #include <linux/slab.h>
 #include <linux/spinlock.h>
 
-/* 内核版本兼容性检测：5.5+ 内核 cong_control 签名变为 2 参数 */
+/*
+ * 内核版本兼容性检测：5.5+ 内核 cong_control 签名变为 2 参数
+ * 注意：Debian 等发行版可能使用 backport 内核头文件，需要根据实际内核版本判断
+ * Linux 5.5 commit: 40570375356c cong_control() 从 4 参数变为 2 参数
+ */
 #if LINUX_VERSION_CODE < KERNEL_VERSION(5, 5, 0)
 #define LOTSPEED_OLD_CONG_CONTROL_API
 #endif
@@ -391,7 +395,7 @@ static void lotspeed_adapt_and_control(struct sock *sk, const struct rate_sample
         rtt_us = ca->rtt_min ? ca->rtt_min : 1000;
     base_rtt = ca->rtt_min ? ca->rtt_min : rtt_us;
     high_delay_path = lotserver_hd_enable && base_rtt >= lotserver_hd_thresh_us;
-    brave_active = lotserver_brave_enable && time_before((unsigned long)now_jif, (unsigned long)ca->brave_freeze_until);
+    brave_active = lotserver_brave_enable && time_before32(now_jif, ca->brave_freeze_until);
 
     // 定期进入 PROBE_RTT 刷新基准 RTT
     if (ca->state != PROBE_RTT &&
