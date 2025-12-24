@@ -11,7 +11,7 @@
 set -e
 
 # ================= 配置区域 =================
-GITHUB_REPO="uk0/lotspeed"
+GITHUB_REPO="Catker/lotspeed"
 GITHUB_BRANCH="ml-tcp"
 INSTALL_DIR="/opt/lotspeed"
 MODULE_NAME="lotspeed"
@@ -226,9 +226,6 @@ obj-m += lotspeed.o
 KERNELDIR ?= /lib/modules/$(shell uname -r)/build
 
 ccflags-y := -std=gnu99
-ifneq ($(shell printf '%s\n6.12.0\n$(KERNEL_RELEASE)' | sort -V | head -n1),6.12.0)
-ccflags-y += -DLOTSPEED_NEW_CONG_CONTROL_API
-endif
 
 PWD := $(shell pwd)
 
