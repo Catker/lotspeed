@@ -1,7 +1,7 @@
 ### lotspeed ml-tcp
 
 <div align=center>
-    <img src="https://github.com/uk0/lotspeed/blob/ml-tcp/logo.png" width="400" height="400" />
+    <img src="https://github.com/Catker/lotspeed/blob/ml-tcp/logo.png" width="400" height="400" />
 </div>
 
 
@@ -15,9 +15,9 @@
 
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/uk0/lotspeed/ml-tcp/install.sh | sudo bash
+curl -fsSL https://raw.githubusercontent.com/Catker/lotspeed/ml-tcp/install.sh | sudo bash
 #   or
-wget -qO- https://raw.githubusercontent.com/uk0/lotspeed/ml-tcp/install.sh | sudo bash
+wget -qO- https://raw.githubusercontent.com/Catker/lotspeed/ml-tcp/install.sh | sudo bash
 ```
 
 
@@ -27,7 +27,7 @@ wget -qO- https://raw.githubusercontent.com/uk0/lotspeed/ml-tcp/install.sh | sud
 
 # 下载代码/编译
 
-git clone https://github.com/uk0/lotspeed.git 
+git clone https://github.com/Catker/lotspeed.git 
 
 cd lotspeed && make
 
@@ -105,7 +105,7 @@ dmesg -w
 
 
 <div align=center>
-    <img src="https://github.com/uk0/lotspeed/blob/ml-tcp/zeta-tcp.png" width="1024" height="768" />
+    <img src="https://github.com/Catker/lotspeed/blob/ml-tcp/zeta-tcp.png" width="1024" height="768" />
 </div>
 
 
@@ -159,4 +159,4 @@ PAC (Proactive ACK Control) for TCP Incast Congestion
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=uk0/lotspeed&type=timeline&logscale&legend=top-left)](https://www.star-history.com/#uk0/lotspeed&type=timeline&logscale&legend=top-left)
+[![Star History Chart](https://api.star-history.com/svg?repos=Catker/lotspeed&type=timeline&logscale&legend=top-left)](https://www.star-history.com/#Catker/lotspeed&type=timeline&logscale&legend=top-left)
