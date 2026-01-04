@@ -20,15 +20,6 @@
 #include <linux/slab.h>
 #include <linux/spinlock.h>
 
-/*
- * 内核版本兼容性检测：5.5+ 内核 cong_control 签名变为 2 参数
- * 注意：Debian 等发行版可能使用 backport 内核头文件，需要根据实际内核版本判断
- * Linux 5.5 commit: 40570375356c cong_control() 从 4 参数变为 2 参数
- */
-#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 5, 0)
-#define LOTSPEED_OLD_CONG_CONTROL_API
-#endif
-
 #define SAFETY_CHECK(ptr, ret) do { \
     if (unlikely(!(ptr))) { \
         return ret; \
@@ -511,7 +502,6 @@ static void lotspeed_cong_control(struct sock *sk, u32 ack, int flag, const stru
     lotspeed_adapt_and_control(sk, rs, flag);
 }
 #else
-/* Linux >= 5.5: 新版 2 参数签名 */
 static void lotspeed_cong_control(struct sock *sk, const struct rate_sample *rs)
 {
     lotspeed_adapt_and_control(sk, rs, 0);
